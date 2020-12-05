@@ -1,0 +1,6 @@
+E:\Projects\Control\bin\Debug\Control.dll
+E:\Projects\Control\bin\Debug\Control.pdb
+E:\Projects\Control\obj\Debug\Control.csprojAssemblyReference.cache
+E:\Projects\Control\obj\Debug\Control.csproj.CoreCompileInputs.cache
+E:\Projects\Control\obj\Debug\Control.dll
+E:\Projects\Control\obj\Debug\Control.pdb

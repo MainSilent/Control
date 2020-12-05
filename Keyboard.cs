@@ -9,10 +9,10 @@ namespace Control
 {
     public class Keyboard
     {
-        public async Task<object> press(dynamic input)
+        public async Task<object> press(string key)
         {
-            SendKeys.Send("{ENTER}");
-            return "dfg";
+            SendKeys.SendWait("{"+ key + "}");
+            return null;
         }
     }
 }

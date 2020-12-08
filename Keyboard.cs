@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using System.Windows;
+using System.Drawing;
 
 namespace Control
 {
@@ -11,7 +14,7 @@ namespace Control
     {
         public async Task<object> press(string key)
         {
-            SendKeys.SendWait("{"+ key + "}");
+            SendKeys.SendWait(key);
             return null;
         }
     }

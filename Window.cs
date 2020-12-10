@@ -102,5 +102,18 @@ namespace Control
             }
             return null;
         }
+
+        // change window bounds
+        [DllImport("user32.dll", EntryPoint = "SetWindowPos")]
+        public static extern IntPtr SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int Y, int cx, int cy, int wFlags);
+
+        public async Task<object> chBounds(dynamic input)
+        {
+            if (input.type == "move") 
+                SetWindowPos((IntPtr)input.handle, 0, input.x, input.y, 0, 0, 0x0001);
+            else if (input.type == "resize")
+                SetWindowPos((IntPtr)input.handle, 0, 0, 0, input.width, input.height, 0x0002);
+            return null;
+        }
     }
 }

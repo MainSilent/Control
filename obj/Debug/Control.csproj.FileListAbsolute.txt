@@ -4,3 +4,9 @@ E:\Projects\Control\obj\Debug\Control.dll
 E:\Projects\Control\obj\Debug\Control.pdb
 E:\Projects\Control\obj\Debug\Control.csprojAssemblyReference.cache
 E:\Projects\Control\obj\Debug\Control.csproj.CoreCompileInputs.cache
+E:\Projects\Control\bin\Debug\FlaUI.Core.dll
+E:\Projects\Control\bin\Debug\FlaUI.UIA3.dll
+E:\Projects\Control\bin\Debug\Interop.UIAutomationClient.dll
+E:\Projects\Control\bin\Debug\FlaUI.Core.xml
+E:\Projects\Control\bin\Debug\FlaUI.UIA3.xml
+E:\Projects\Control\obj\Debug\Control.csproj.CopyComplete

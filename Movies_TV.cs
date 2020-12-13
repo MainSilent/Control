@@ -70,8 +70,8 @@ namespace Control
             var automation = new UIA3Automation();
             var window = app.GetMainWindow(automation);
             var name = window.FindFirstDescendant(cf.ByAutomationId("MetadataPrimaryTextBlock"));
-            var duration = window.FindFirstDescendant(cf.ByAutomationId("TimeElapsedElement"));
-            var current = window.FindFirstDescendant(cf.ByAutomationId("TimeRemainingElement"));
+            var current = window.FindFirstDescendant(cf.ByAutomationId("TimeElapsedElement"));
+            var duration = window.FindFirstDescendant(cf.ByAutomationId("TimeRemainingElement"));
 
             return $"{{\"title\": \"{name.Name}\", \"duration\": \"{duration.Name}\", \"current\": \"{current.Name}\"}}";
         }

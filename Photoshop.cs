@@ -1,14 +1,12 @@
 ﻿using FlaUI.UIA3;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
+using System.Drawing;
+using System.Diagnostics;
+using System.Drawing.Imaging;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Control
 {
@@ -83,6 +81,69 @@ namespace Control
             img.Save(ms, ImageFormat.Png);
             byte[] byteImage = ms.ToArray();
             return Convert.ToBase64String(byteImage);
+        }
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool GetWindowRect(HandleRef hWnd, out RECT lpRect);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern bool SetCursorPos(int X, int Y);
+
+        [DllImport("user32.dll")]
+        static extern void mouse_event(int dwFlags, int dx, int dy, int dwData, int dwExtraInfo);
+       
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct RECT
+        {
+            public int Left;        // x position of upper-left corner
+            public int Top;         // y position of upper-left corner
+            public int Right;       // x position of lower-right corner
+            public int Bottom;      // y position of lower-right corner
+        }
+
+        public int X = 0;
+        public int Y = 0;
+        Rectangle window = new Rectangle();
+
+        // select tools
+        public async Task<object> tools(dynamic input)
+        {
+            RECT rct;
+            GetWindowRect(new HandleRef(this, (IntPtr)input.handle), out rct);
+            window.X = rct.Left;
+            window.Y = rct.Top;
+            window.Width = rct.Right - rct.Left;
+            window.Height = rct.Bottom - rct.Top;
+
+            int outputX = window.X + 25;
+            int outputY = window.Y + Y;
+
+            switch (input.type)
+            {
+                case "brush":
+                    Y = 290;
+                    break;
+                case "eraser":
+                    Y = 370;
+                    break;
+                case "hand":
+                    Y = 585;
+                    break;
+                case "reset":
+                    SetCursorPos(0, 2000);
+                    break;
+            }
+
+            if (input.type != "reset")
+            {
+                SetCursorPos(outputX, outputY);
+                mouse_event(0x0002, outputX, outputY, 0, 0);
+                mouse_event(0x0004, outputX, outputY, 0, 0);
+            }
+
+            return null;
         }
     }
 }

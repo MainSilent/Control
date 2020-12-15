@@ -64,6 +64,7 @@
     <Compile Include="Keyboard.cs" />
     <Compile Include="Mouse.cs" />
     <Compile Include="Movies_TV.cs" />
+    <Compile Include="Photoshop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Window.cs" />
   </ItemGroup>

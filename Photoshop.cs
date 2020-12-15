@@ -145,5 +145,33 @@ namespace Control
 
             return null;
         }
+
+        // click on photoshop document
+        public async Task<object> click(dynamic input)
+        {
+            RECT rct;
+            GetWindowRect(new HandleRef(this, (IntPtr)input.handle), out rct);
+            window.X = rct.Left + 45;
+            window.Y = rct.Top + 87;
+            window.Width = rct.Right - rct.Left;
+            window.Height = rct.Bottom - rct.Top;
+
+            WINDOWPLACEMENT placement = new WINDOWPLACEMENT();
+            GetWindowPlacement((IntPtr)input.handle, ref placement);
+            if (placement.showCmd == 3)
+            {
+                window.X += 8;
+                window.Y += 8;
+            }
+
+            int outputX = window.X + (int)input.x;
+            int outputY = window.Y + (int)input.y;
+
+            SetCursorPos(outputX, outputY);
+            mouse_event(0x0002, outputX, outputY, 0, 0);
+            mouse_event(0x0004, outputX, outputY, 0, 0);
+
+            return null;
+        }
     }
 }

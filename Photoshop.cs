@@ -173,5 +173,31 @@ namespace Control
 
             return null;
         }
+
+        public async Task<object> hand(string type)
+        {
+            switch(type)
+            {
+                case "up":
+                    SendKeys.SendWait("{PGUP}");
+                    break;
+                case "down":
+                    SendKeys.SendWait("{PGDN}");
+                    break;
+                case "left":
+                    SendKeys.SendWait("^{PGUP}");
+                    break;
+                case "right":
+                    SendKeys.SendWait("^{PGDN}");
+                    break;
+                case "zoom-in":
+                    SendKeys.SendWait("^{+}");
+                    break;
+                case "zoom-out":
+                    SendKeys.SendWait("^{-}");
+                    break;
+            }
+            return null;
+        }
     }
 }
